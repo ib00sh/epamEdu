@@ -5,14 +5,13 @@ public class ATM {
         this.money = money;
     }
 
-    public void take(int amount, String user){
+    public synchronized void take(int amount, String user){
         if(money >= amount){
             try {
                 Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             money -= amount;
             System.out.println(user + " take: " + amount);
         }
